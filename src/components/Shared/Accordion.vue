@@ -2,9 +2,9 @@
   <div class="py-5 border-b border-solid border-brand-gray-1">
     <div
       class="flex flex-wrap items-center justify-between cursor-pointer"
-      @click="toggleAccordion"
+      @click="open"
     >
-      <h3 class="text-base font-semibold">{{ header }}</h3>
+      <h3 class="text-lg font-medium">{{ header }}</h3>
       <font-awesome-icon :icon="changeIcon" />
     </div>
     <div v-if="isOpen" class="w-full mt-5">
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { computed, ref } from "vue";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Accordion",
@@ -25,20 +27,20 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      isOpen: false,
+  setup() {
+    const isOpen = ref(false);
+
+    const open = () => {
+      isOpen.value = !isOpen.value;
     };
-  },
-  computed: {
-    changeIcon() {
-      return this.isOpen ? ["fasl", "angle-up"] : ["fasl", "angle-down"];
-    },
-  },
-  methods: {
-    toggleAccordion() {
-      this.isOpen = !this.isOpen;
-    },
+    const changeIcon = computed(() => {
+      return isOpen.value ? ["fas", "angle-up"] : ["fas", "angle-down"];
+    });
+    return {
+      open,
+      isOpen,
+      changeIcon,
+    };
   },
 };
 </script>
