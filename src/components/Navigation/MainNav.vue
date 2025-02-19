@@ -25,7 +25,11 @@
           </ul>
         </nav>
         <div class="flex items-center h-full ml-auto">
-          <profile-image v-if="isLoggedIn" />
+          <profile-image
+            v-if="isLoggedIn"
+            text="Sign out"
+            @click="LOGOUT_USER()"
+          />
           <action-button
             v-else
             text="Sign in"
@@ -33,7 +37,7 @@
           ></action-button>
         </div>
       </div>
-      <sub-nav v-if="isLoggedIn" />
+      <sub-nav v-if="showSubnav" />
     </div>
   </header>
 </template>
@@ -43,7 +47,7 @@ import { mapMutations, mapState } from "vuex";
 import profileImage from "@/components/Navigation/profileImage.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import SubNav from "@/components/Navigation/SubNav.vue";
-import { LOGIN_USER } from "@/store";
+import { LOGIN_USER, LOGOUT_USER } from "@/store/constants";
 export default {
   name: "MainNav",
   components: {
@@ -65,21 +69,19 @@ export default {
   },
   computed: {
     headerHeightClass() {
-      return {
-        "h-16": !this.isLoggedIn,
-        "h-32": this.isLoggedIn,
-      };
+      if (this.$route.path === "/jobs/results") {
+        return { "h-16": !this.isLoggedIn, "h-32": this.isLoggedIn };
+      }
+      return "h-16";
     },
-    // isLoggedIn() {
-    //   return this.$store.state.isLoggedIn;
-    // },
     ...mapState(["isLoggedIn"]),
+    showSubnav() {
+      return this.isLoggedIn && this.$route.path === "/jobs/results";
+    },
   },
   methods: {
-    // loginUser() {
-    //   this.$store.commit(LOGIN_USER);
-    // },
     ...mapMutations([LOGIN_USER]),
+    ...mapMutations([LOGOUT_USER]),
   },
 };
 </script>

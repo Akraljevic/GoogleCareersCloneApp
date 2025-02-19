@@ -26,8 +26,9 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import { FETCH_JOBS } from "@/store";
+import { mapActions, mapGetters } from "vuex";
+
+import { FETCH_JOBS, FILTERED_JOBS } from "@/store/constants";
 
 import JobListing from "./JobListing.vue";
 export default {
@@ -36,6 +37,7 @@ export default {
     JobListing,
   },
   computed: {
+    ...mapGetters([FILTERED_JOBS]),
     previousPage() {
       const previousPage = this.currentPage - 1;
       const firstPage = 1;
@@ -43,7 +45,7 @@ export default {
     },
     nextPage() {
       const nextPage = this.currentPage + 1;
-      const lastPage = Math.ceil(this.jobs.length / 10);
+      const lastPage = Math.ceil(this.FILTERED_JOBS.length / 10);
       return nextPage <= lastPage ? nextPage : undefined;
     },
     currentPage() {
@@ -54,16 +56,17 @@ export default {
       const pageNumber = this.currentPage;
       const firstJobIndex = (pageNumber - 1) * 10;
       const lastJobIndex = pageNumber * 10 - 1;
-      return this.jobs.slice(firstJobIndex, lastJobIndex);
+      return this.FILTERED_JOBS.slice(firstJobIndex, lastJobIndex);
     },
-    ...mapState(["jobs"]),
+    // ...mapState(["jobs"]),
   },
   async mounted() {
-    this.$store.dispatch(FETCH_JOBS);
+    this.FETCH_JOBS();
   },
-}; // const baseUrl = process.env.VUE_APP_API_URL;
-// const response = await axios.get(`${baseUrl}/jobs`);
-// this.jobs = response.data;
+  methods: {
+    ...mapActions([FETCH_JOBS]),
+  },
+};
 </script>
 
 <style scoped lang="postcss">
