@@ -13,16 +13,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { FILTERED_JOBS } from "@/store/constants";
+import { useConfirmRoute } from "@/composables/useConfirmRoute";
+import { useFilteredJobs } from "@/store/composables";
 
 export default {
   name: "SubNav",
-  computed: {
-    ...mapGetters([FILTERED_JOBS]),
-    onJobResultsPage() {
-      return this.$route.path === "/jobs/results";
-    },
+  setup() {
+    // const route = useRoute();
+    // const onJobResultsPage = computed(() => route.name === "JobResults");
+    const onJobResultsPage = useConfirmRoute("JobResults");
+    // const store = useStore();
+    // const FILTERED_JOBS = computed(() => store.getters.FILTERED_JOBS);
+    const FILTERED_JOBS = useFilteredJobs();
+    return { onJobResultsPage, FILTERED_JOBS };
   },
 };
 </script>
