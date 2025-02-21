@@ -42,12 +42,14 @@
   </header>
 </template>
 <script>
-import { mapMutations, mapState } from "vuex";
-
+// import { mapMutations, mapState } from "vuex";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 import profileImage from "@/components/Navigation/profileImage.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import SubNav from "@/components/Navigation/SubNav.vue";
-import { LOGIN_USER, LOGOUT_USER } from "@/store/constants";
+// import { LOGIN_USER, LOGOUT_USER } from "@/store/constants";
 export default {
   name: "MainNav",
   components: {
@@ -55,33 +57,37 @@ export default {
     profileImage,
     SubNav,
   },
-  data() {
-    return {
-      menuItems: [
-        { text: "Teams", url: "/teams" },
-        { text: "Locations", url: "/" },
-        { text: "Life at Careers", url: "/" },
-        { text: "Benefits", url: "/" },
-        { text: "Students", url: "/" },
-        { text: "Jobs", url: "/jobs/results" },
-      ],
-    };
-  },
-  computed: {
-    headerHeightClass() {
-      if (this.$route.path === "/jobs/results") {
-        return { "h-16": !this.isLoggedIn, "h-32": this.isLoggedIn };
+  setup() {
+    const menuItems = ref([
+      { text: "Teams", url: "/teams" },
+      { text: "Locations", url: "/" },
+      { text: "Life at Careers", url: "/" },
+      { text: "Benefits", url: "/" },
+      { text: "Students", url: "/" },
+      { text: "Jobs", url: "/jobs/results" },
+    ]);
+    const store = useStore();
+    const route = useRoute();
+    const isLoggedIn = computed(() => store.state.isLoggedIn);
+    const showSubnav = computed(
+      () => isLoggedIn.value && route.path === "/jobs/results"
+    );
+    const headerHeightClass = computed(() => {
+      if (route.path === "/jobs/results") {
+        return { "h-16": !isLoggedIn.value, "h-32": isLoggedIn.value };
       }
       return "h-16";
-    },
-    ...mapState(["isLoggedIn"]),
-    showSubnav() {
-      return this.isLoggedIn && this.$route.path === "/jobs/results";
-    },
-  },
-  methods: {
-    ...mapMutations([LOGIN_USER]),
-    ...mapMutations([LOGOUT_USER]),
+    });
+    const LOGIN_USER = () => store.commit("LOGIN_USER");
+    const LOGOUT_USER = () => store.commit("LOGOUT_USER");
+    return {
+      menuItems,
+      headerHeightClass,
+      isLoggedIn,
+      showSubnav,
+      LOGIN_USER,
+      LOGOUT_USER,
+    };
   },
 };
 </script>
