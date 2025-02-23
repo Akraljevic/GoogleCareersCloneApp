@@ -1,50 +1,26 @@
 <template>
-  <accordion header="Organization">
-    <div class="mt-5">
-      <fieldset>
-        <ul class="flex flex-row flex-wrap">
-          <li
-            v-for="organization in uniqueOrganizations"
-            :key="organization"
-            class="w-1/2 h-8"
-          >
-            <input
-              :id="organization"
-              v-model="selectedOrganizations"
-              :value="organization"
-              type="checkbox"
-              class="mr-3"
-              @change="selectOrganization"
-            />
-            <label :for="organization">{{ organization }}</label>
-          </li>
-        </ul>
-      </fieldset>
-    </div>
-  </accordion>
+  <job-filters-sidbear-checkbox-group
+    :unique-values="uniqueOrganizations"
+    :mutation="ADD_SELECTED_ORGANIZATIONS"
+  />
 </template>
 
 <script>
-import { ref } from "vue";
 import { useUniqueOrganizations } from "@/store/composables";
-import { useRouter } from "vue-router";
-import { useStore } from "vuex";
 import { ADD_SELECTED_ORGANIZATIONS } from "@/store/constants";
-import { key } from "@/store";
-import Accordion from "@/components/Shared/Accordion.vue";
+import JobFiltersSidbearCheckboxGroup from "./JobFiltersSidbearCheckboxGroup.vue";
+
 export default {
-  name: "JobFiltersSidebarOrganization",
-  components: { Accordion },
+  name: "JobFiltersSidebarOrganizations",
+  components: {
+    JobFiltersSidbearCheckboxGroup,
+  },
   setup() {
-    const store = useStore(key);
-    const router = useRouter();
-    const selectedOrganizations = ref([]);
     const uniqueOrganizations = useUniqueOrganizations();
-    const selectOrganization = () => {
-      store.commit(ADD_SELECTED_ORGANIZATIONS, selectedOrganizations.value);
-      router.push({ name: "JobResults" });
+    return {
+      uniqueOrganizations,
+      ADD_SELECTED_ORGANIZATIONS,
     };
-    return { selectOrganization, selectedOrganizations, uniqueOrganizations };
   },
 };
 </script>

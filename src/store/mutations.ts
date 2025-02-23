@@ -1,5 +1,6 @@
 import {
   RECIEVE_JOBS,
+  CLEAR_FILTERS,
   RECIEVE_DEGREES,
   LOGIN_USER,
   LOGOUT_USER,
@@ -32,6 +33,11 @@ const mutations = {
   },
   [ADD_SELECTED_DEGREES](state: GlobalState, degrees: string[]) {
     state.selectedDegrees = degrees;
+  },
+  [CLEAR_FILTERS](state: GlobalState) {
+    state.selectedOrganizations = [];
+    state.selectedJobTypes = [];
+    state.selectedDegrees = [];
   },
 };
 

@@ -1,52 +1,26 @@
 <template>
-  <accordion header="Job Types">
-    <div class="mt-5">
-      <fieldset>
-        <ul class="flex flex-row flex-wrap">
-          <li
-            v-for="jobType in uniqueJobTypes"
-            :key="jobType"
-            class="w-1/2 h-8"
-          >
-            <input
-              :id="jobType"
-              v-model="selectedJobTypes"
-              :value="jobType"
-              type="checkbox"
-              class="mr-3"
-              @change="selectJobType"
-            />
-            <label :for="jobType">{{ jobType }}</label>
-          </li>
-        </ul>
-      </fieldset>
-    </div>
-  </accordion>
+  <job-filters-sidbear-checkbox-group
+    :unique-values="uniqueJobTypes"
+    :mutation="ADD_SELECTED_JOB_TYPES"
+  />
 </template>
 
 <script>
-import { ref } from "vue";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
-import { ADD_SELECTED_JOB_TYPES } from "@/store/constants";
-import { key } from "@/store";
-import Accordion from "@/components/Shared/Accordion.vue";
+import JobFiltersSidbearCheckboxGroup from "./JobFiltersSidbearCheckboxGroup.vue";
 
 import { useUniqueJobTypes } from "@/store/composables";
-
+import { ADD_SELECTED_JOB_TYPES } from "@/store/constants";
 export default {
   name: "JobFiltersSidebarJobTypes",
-  components: { Accordion },
+  components: {
+    JobFiltersSidbearCheckboxGroup,
+  },
   setup() {
-    const store = useStore(key);
-    const router = useRouter();
-    const selectedJobTypes = ref([]);
     const uniqueJobTypes = useUniqueJobTypes();
-    const selectJobType = () => {
-      store.commit(ADD_SELECTED_JOB_TYPES, selectedJobTypes.value);
-      router.push({ name: "JobResults" });
+    return {
+      uniqueJobTypes,
+      ADD_SELECTED_JOB_TYPES,
     };
-    return { selectedJobTypes, selectJobType, uniqueJobTypes };
   },
 };
 </script>

@@ -5,64 +5,41 @@
     <section class="pb-5">
       <div class="flex flex-row justify-between">
         <h3 class="my-4 text-base font-semibold">What do you want to do</h3>
-        <div class="flex items-center text-sm">
-          <action-button text="Clear filters" type="filterbtn" />
+        <div class="flex items-center">
+          <job-filter-sidebar-prompt />
         </div>
       </div>
-      <job-filters-sidbear-checkbox-group
-        header="Job Types"
-        :unique-values="uniqueJobTypes"
-        :mutation="ADD_SELECTED_JOB_TYPES"
-      />
-      <job-filters-sidbear-checkbox-group
-        header="Orgnizations"
-        :unique-values="uniqueOrganizations"
-        :mutation="ADD_SELECTED_ORGANIZATIONS"
-      />
-      <job-filters-sidbear-checkbox-group
-        header="Degrees"
-        :unique-values="uniqueDegrees"
-        :mutation="ADD_SELECTED_DEGREES"
-      />
+      <accordion header="Job Types">
+        <job-filters-sidebar-job-types />
+      </accordion>
+      <accordion header="Organizations">
+        <job-filters-sidebar-organization />
+      </accordion>
+      <accordion header="Degrees">
+        <job-filters-sidebar-degrees />
+      </accordion>
     </section>
   </div>
 </template>
 
 <script lang="ts">
-import ActionButton from "@/components/Shared/ActionButton.vue";
-
 import { defineComponent } from "vue";
 
-import JobFiltersSidbearCheckboxGroup from "./JobFiltersSidbearCheckboxGroup.vue";
+import Accordion from "@/components/Shared/Accordion.vue";
 
-import {
-  useUniqueJobTypes,
-  useUniqueOrganizations,
-  useUniqueDegrees,
-} from "@/store/composables";
-import {
-  ADD_SELECTED_JOB_TYPES,
-  ADD_SELECTED_ORGANIZATIONS,
-  ADD_SELECTED_DEGREES,
-} from "@/store/constants";
+import JobFiltersSidebarDegrees from "./JobFiltersSidebarDegrees.vue";
+import JobFiltersSidebarJobTypes from "./JobFiltersSidebarJobTypes.vue";
+import JobFiltersSidebarOrganization from "./JobFiltersSidebarOrganization.vue";
+import JobFilterSidebarPrompt from "./JobFilterSidebarPrompt.vue";
 export default defineComponent({
   name: "JobFiltersSidebar",
   components: {
-    ActionButton,
-    JobFiltersSidbearCheckboxGroup,
+    Accordion,
+    JobFiltersSidebarDegrees,
+    JobFiltersSidebarJobTypes,
+    JobFiltersSidebarOrganization,
+    JobFilterSidebarPrompt,
   },
-  setup() {
-    const uniqueJobTypes = useUniqueJobTypes();
-    const uniqueOrganizations = useUniqueOrganizations();
-    const uniqueDegrees = useUniqueDegrees();
-    return {
-      uniqueJobTypes,
-      uniqueOrganizations,
-      uniqueDegrees,
-      ADD_SELECTED_JOB_TYPES,
-      ADD_SELECTED_ORGANIZATIONS,
-      ADD_SELECTED_DEGREES,
-    };
-  },
+  setup() {},
 });
 </script>

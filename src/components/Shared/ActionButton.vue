@@ -46,6 +46,6 @@ button {
   @apply text-brand-blue-2  hover:text-brand-blue-1  duration-150 ease-out;
 }
 .filterbtn {
-  @apply text-brand-blue-2 text-base p-2 flex items-center font-semibold rounded hover:bg-brand-gray-2 hover:text-brand-blue-1 duration-150 ease-out;
+  @apply text-brand-blue-2 text-sm p-2 flex items-center font-semibold rounded hover:bg-brand-gray-2 hover:text-brand-blue-1 duration-150 ease-out;
 }
 </style>
