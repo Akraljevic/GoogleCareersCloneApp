@@ -25,20 +25,25 @@
   </main>
 </template>
 
-<script>
-import { computed, onMounted } from "vue";
-import { useFilteredJobs, useFetchJobsDispatch } from "@/store/composables";
+<script lang="ts">
+import { computed, onMounted, defineComponent } from "vue";
+import {
+  useFilteredJobs,
+  useFetchJobsDispatch,
+  useFetchDegreesDispatch,
+} from "@/store/composables";
 import { useCurrentPage } from "@/composables/useCurrentPage";
 import usePreviousAndNextPage from "@/composables/usePreviousAndNextPage";
 import JobListing from "./JobListing.vue";
-export default {
+
+export default defineComponent({
   name: "JobListings",
   components: {
     JobListing,
   },
   setup() {
     onMounted(useFetchJobsDispatch);
-
+    onMounted(useFetchDegreesDispatch);
     const filteredJobs = useFilteredJobs();
 
     const currentPage = useCurrentPage();
@@ -62,7 +67,7 @@ export default {
       displayedJobs,
     };
   },
-};
+});
 </script>
 
 <style scoped lang="postcss">

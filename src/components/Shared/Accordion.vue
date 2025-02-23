@@ -15,10 +15,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { computed, ref } from "vue";
-
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Accordion",
   props: {
@@ -42,5 +42,5 @@ export default {
       changeIcon,
     };
   },
-};
+});
 </script>

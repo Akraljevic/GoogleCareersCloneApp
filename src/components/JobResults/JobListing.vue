@@ -58,13 +58,14 @@
   </li>
 </template>
 
-<script>
-import { computed } from "vue";
-export default {
+<script lang="ts">
+import { computed, defineComponent, PropType } from "vue";
+import { JobInterface } from "@/api/types";
+export default defineComponent({
   name: "JobListings",
   props: {
     job: {
-      type: Object,
+      type: Object as PropType<JobInterface>,
       required: true,
     },
   },
@@ -74,7 +75,7 @@ export default {
       jobPageLink,
     };
   },
-};
+});
 </script>
 
 <style lang="postcss" scoped>

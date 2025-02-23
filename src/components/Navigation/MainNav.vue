@@ -41,16 +41,16 @@
     </div>
   </header>
 </template>
-<script>
-// import { mapMutations, mapState } from "vuex";
+<script lang="ts">
+import { defineComponent } from "vue";
 import { ref, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import { key } from "@/store";
 import profileImage from "@/components/Navigation/profileImage.vue";
 import ActionButton from "@/components/Shared/ActionButton.vue";
 import SubNav from "@/components/Navigation/SubNav.vue";
-// import { LOGIN_USER, LOGOUT_USER } from "@/store/constants";
-export default {
+export default defineComponent({
   name: "MainNav",
   components: {
     ActionButton,
@@ -66,7 +66,7 @@ export default {
       { text: "Students", url: "/" },
       { text: "Jobs", url: "/jobs/results" },
     ]);
-    const store = useStore();
+    const store = useStore(key);
     const route = useRoute();
     const isLoggedIn = computed(() => store.state.isLoggedIn);
     const showSubnav = computed(
@@ -89,5 +89,5 @@ export default {
       LOGOUT_USER,
     };
   },
-};
+});
 </script>

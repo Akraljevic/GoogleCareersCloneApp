@@ -29,7 +29,7 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { ADD_SELECTED_JOB_TYPES } from "@/store/constants";
-
+import { key } from "@/store";
 import Accordion from "@/components/Shared/Accordion.vue";
 
 import { useUniqueJobTypes } from "@/store/composables";
@@ -38,7 +38,7 @@ export default {
   name: "JobFiltersSidebarJobTypes",
   components: { Accordion },
   setup() {
-    const store = useStore();
+    const store = useStore(key);
     const router = useRouter();
     const selectedJobTypes = ref([]);
     const uniqueJobTypes = useUniqueJobTypes();

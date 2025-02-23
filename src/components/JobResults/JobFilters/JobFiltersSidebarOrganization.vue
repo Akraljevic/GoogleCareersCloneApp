@@ -30,12 +30,13 @@ import { useUniqueOrganizations } from "@/store/composables";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { ADD_SELECTED_ORGANIZATIONS } from "@/store/constants";
+import { key } from "@/store";
 import Accordion from "@/components/Shared/Accordion.vue";
 export default {
   name: "JobFiltersSidebarOrganization",
   components: { Accordion },
   setup() {
-    const store = useStore();
+    const store = useStore(key);
     const router = useRouter();
     const selectedOrganizations = ref([]);
     const uniqueOrganizations = useUniqueOrganizations();

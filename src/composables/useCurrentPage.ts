@@ -3,5 +3,6 @@ import { computed } from "vue";
 
 export const useCurrentPage = () => {
   const route = useRoute();
-  return computed(() => Number.parseInt(route.query.page || "1"));
+  const page = route.query.page as string;
+  return computed(() => Number.parseInt(page || "1"));
 };

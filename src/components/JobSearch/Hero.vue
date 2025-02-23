@@ -52,11 +52,12 @@
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import Headline from "@/components/JobSearch/Headline.vue";
 import JobSearch from "@/components/JobSearch/JobSearch.vue";
 import Spotlight from "@/components/JobSearch/Spotlight.vue";
-export default {
+export default defineComponent({
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Hero",
   components: {
@@ -64,7 +65,7 @@ export default {
     JobSearch,
     Spotlight,
   },
-};
+});
 </script>
 
 ActionButton
