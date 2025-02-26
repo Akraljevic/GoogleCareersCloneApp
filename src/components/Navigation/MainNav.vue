@@ -61,10 +61,9 @@ export default defineComponent({
     const menuItems = ref([
       { text: "Teams", url: "/teams" },
       { text: "Locations", url: "/" },
-      { text: "Life at Careers", url: "/" },
       { text: "Benefits", url: "/" },
-      { text: "Students", url: "/" },
       { text: "Jobs", url: "/jobs/results" },
+      { text: "Students", url: "/" },
     ]);
     const store = useStore(key);
     const route = useRoute();

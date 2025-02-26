@@ -48,4 +48,7 @@ button {
 .filterbtn {
   @apply text-brand-blue-2 text-sm p-2 flex items-center font-semibold rounded hover:bg-brand-gray-2 hover:text-brand-blue-1 duration-150 ease-out;
 }
+.jobSearchBtn {
+  @apply text-white rounded-3xl bg-blue-600 hover:bg-brand-blue-1 text-sm py-4 font-semibold;
+}
 </style>

@@ -2,7 +2,7 @@
   <div class="mt-5">
     <input
       v-model.lazy.trim="skillsSearchTerm"
-      class="p-3 h-12 border border-solid border-brand-gray-1 shadow-gray rounded w-full text-base"
+      class="p-3 h-12 border border-solid border-brand-gray-3 hover:border-black rounded w-full text-base"
       placeholder="AI developer, Data Scientist, etc."
     />
   </div>

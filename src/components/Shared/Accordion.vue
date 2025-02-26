@@ -1,11 +1,15 @@
 <template>
-  <div class="py-5 border-b border-solid border-brand-gray-1">
+  <div class="py-3 border-b border-solid border-brand-gray-1">
     <div
       class="flex flex-wrap items-center justify-between cursor-pointer"
       @click="open"
     >
       <h3 class="text-lg font-medium">{{ header }}</h3>
-      <font-awesome-icon :icon="changeIcon" />
+      <div
+        class="relative flex items-center justify-center hover:bg-brand-gray-2 w-12 h-12 p-3 rounded-full"
+      >
+        <font-awesome-icon :icon="changeIcon" />
+      </div>
     </div>
     <div v-if="isOpen" class="w-full mt-5">
       <slot>
