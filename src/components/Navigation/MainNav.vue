@@ -1,5 +1,5 @@
 <template>
-  <header :class="(['w - full', 'text - sm'], headerHeightClass)">
+  <header :class="headerHeightClass">
     <div class="fixed top-0 left-0 w-full h-16 bg-white">
       <div
         class="flex flex-nowrap h-full px-8 mx-auto border-b border-solid border-brand-gray-1"
@@ -61,7 +61,7 @@ export default defineComponent({
     const menuItems = ref([
       { text: "Teams", url: "/teams" },
       { text: "Locations", url: "/" },
-      { text: "Benefits", url: "/" },
+      { text: "Benefits", url: "/benefits" },
       { text: "Jobs", url: "/jobs/results" },
       { text: "Students", url: "/" },
     ]);

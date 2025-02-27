@@ -6,6 +6,9 @@ import {
   faSearch,
   faAngleDown,
   faAngleUp,
+  faCheck,
+  faMoneyBills,
+  faBriefcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
 
 import App from "@/App.vue";
@@ -17,6 +20,9 @@ library.add(faSearch);
 library.add(faLocationDot);
 library.add(faAngleDown);
 library.add(faAngleUp);
+library.add(faCheck);
+library.add(faMoneyBills);
+library.add(faBriefcaseMedical);
 
 createApp(App)
   .use(store, key)

@@ -1,9 +1,9 @@
 <template>
   <li class="mb-7">
-    <router-link
-      :to="jobPageLink"
+    <div
       class="block mx-auto bg-white border border-salid border-brand-gray-2 rounded-2xl shadow-gray hover:shadow-gray"
-      ><div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
+    >
+      <div class="pt-5 pb-2 mx-8 border-b border-solid border-brand-gray-2">
         <h2 class="text-2xl mb-2">{{ job.title }}</h2>
         <div class="flex flex-row align-middle">
           <div class="mr-5">
@@ -53,8 +53,8 @@
             </div>
           </div>
         </div>
-      </div></router-link
-    >
+      </div>
+    </div>
   </li>
 </template>
 
@@ -62,7 +62,7 @@
 import { computed, defineComponent, PropType } from "vue";
 import { JobInterface } from "@/api/types";
 export default defineComponent({
-  name: "JobListings",
+  name: "JobListing",
   props: {
     job: {
       type: Object as PropType<JobInterface>,

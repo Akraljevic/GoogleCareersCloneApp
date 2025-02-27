@@ -8,7 +8,6 @@ import {
   ADD_SELECTED_ORGANIZATIONS,
   ADD_SELECTED_DEGREES,
   UPDATE_SKILL_SEARCH_TERM,
-  INCLUDE_JOB_BY_SKILL,
 } from "@/store/constants";
 
 import { GlobalState } from "./types";

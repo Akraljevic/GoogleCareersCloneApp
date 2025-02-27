@@ -4,9 +4,9 @@
       class="flex flex-wrap items-center justify-between cursor-pointer"
       @click="open"
     >
-      <h3 class="text-lg font-medium">{{ header }}</h3>
+      <h3 :class="['text-lg font-medium', headerClass]">{{ header }}</h3>
       <div
-        class="relative flex items-center justify-center hover:bg-brand-gray-2 w-12 h-12 p-3 rounded-full"
+        class="flex items-center justify-center hover:bg-brand-gray-2 w-12 h-12 p-3 rounded-full"
       >
         <font-awesome-icon :icon="changeIcon" />
       </div>
@@ -29,6 +29,11 @@ export default defineComponent({
     header: {
       type: String,
       required: true,
+    },
+    headerClass: {
+      type: String,
+      required: false,
+      default: "text-lg font-medium",
     },
   },
   setup() {

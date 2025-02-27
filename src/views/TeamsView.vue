@@ -1,5 +1,5 @@
 <template>
-  <header-container>
+  <header-container class="border-b border-brand-gray-1">
     <template #title>
       <h1 class="w-full text-5xl font-normal">Teams</h1>
     </template>
@@ -11,15 +11,19 @@
       </h2>
     </template>
   </header-container>
+  <div class="flex">
+    <team-view-jobs />
+  </div>
 </template>
 
 <script>
 import HeaderContainer from "@/components/Shared/HeaderContainer.vue";
-
+import TeamViewJobs from "@/components/TeamViewJobs.vue";
 export default {
   name: "TeamsView",
   components: {
     HeaderContainer,
+    TeamViewJobs,
   },
 };
 </script>
