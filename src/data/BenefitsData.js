@@ -24,3 +24,16 @@ export const healthItems = [
   { text: "On-site health services" },
   { text: "Onsite wellness centers" },
 ];
+
+export const timeOffItems = [
+  {
+    description:
+      "The time you need to recharge, and the flexibility to get your best work done.",
+  },
+  {
+    text: "Paid time off, including vacation, bereavement, jury duty, sick leave, parental leave, disability, and holidays",
+  },
+  { text: "Hybrid work model with remote work opportunities also available" },
+  { text: "Four “work from anywhere” weeks per year" },
+  { text: "Part-time work and job-sharing options" },
+];

@@ -4,7 +4,9 @@
       class="flex flex-wrap items-center justify-between cursor-pointer"
       @click="open"
     >
-      <h3 :class="['text-lg font-medium', headerClass]">{{ header }}</h3>
+      <h3 :class="headerClass">
+        {{ header }}
+      </h3>
       <div
         class="flex items-center justify-center hover:bg-brand-gray-2 w-12 h-12 p-3 rounded-full"
       >

@@ -28,7 +28,10 @@ import { defineComponent, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { key } from "@/store";
-import { UPDATE_SKILL_SEARCH_TERM } from "@/store/constants";
+import {
+  UPDATE_SKILL_SEARCH_TERM,
+  UPDATE_LOCATION_SEARCH_TERM,
+} from "@/store/constants";
 import Accordion from "@/components/Shared/Accordion.vue";
 
 import JobFiltersSidebarDegrees from "./JobFiltersSidebarDegrees.vue";
@@ -53,8 +56,13 @@ export default defineComponent({
       const role = route.query.role || "";
       store.commit(UPDATE_SKILL_SEARCH_TERM, role);
     };
+    const parseLocationSearchTerm = () => {
+      const location = route.query.location || "";
+      store.commit(UPDATE_LOCATION_SEARCH_TERM, location);
+    };
+    onMounted(parseLocationSearchTerm);
     onMounted(parseSkillSearchTerm);
-    return { parseSkillSearchTerm };
+    return { parseSkillSearchTerm, parseLocationSearchTerm };
   },
 });
 </script>

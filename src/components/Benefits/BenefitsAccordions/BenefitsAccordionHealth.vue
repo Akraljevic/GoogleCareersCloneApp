@@ -1,11 +1,7 @@
 <template>
   <div class="flex justify-center w-full">
     <div class="w-full max-w-7xl">
-      <accordion
-        header="Health and Wellnes"
-        header-class="text-4xl tracking-tight"
-        class="pb-6"
-      >
+      <accordion header="Health and Wellnes" header-class="text-4xl py-2">
         <div class="flex items-start py-8">
           <div class="flex items-start space-x-4 w-1/3">
             <div class="bg-blue-100 p-4 rounded-full">

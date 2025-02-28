@@ -10,7 +10,7 @@ import {
   faMoneyBills,
   faBriefcaseMedical,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { faClock } from "@fortawesome/free-regular-svg-icons";
 import App from "@/App.vue";
 import "@/assets/tailwind.css";
 import router from "@/router";
@@ -23,7 +23,7 @@ library.add(faAngleUp);
 library.add(faCheck);
 library.add(faMoneyBills);
 library.add(faBriefcaseMedical);
-
+library.add(faClock);
 createApp(App)
   .use(store, key)
   .use(router)

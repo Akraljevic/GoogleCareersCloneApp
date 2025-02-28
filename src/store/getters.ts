@@ -7,6 +7,7 @@ import {
   INCLUDE_JOB_BY_JOB_TYPE,
   INCLUDE_JOB_BY_DEGREE,
   INCLUDE_JOB_BY_SKILL,
+  INCLUDE_JOB_BY_LOCATION,
 } from "@/store/constants";
 
 import { GlobalState } from "./types";
@@ -17,6 +18,7 @@ interface IncludeJobGetters {
   INCLUDE_JOB_BY_JOB_TYPE: (job: JobInterface) => boolean;
   INCLUDE_JOB_BY_DEGREE: (job: JobInterface) => boolean;
   INCLUDE_JOB_BY_SKILL: (job: JobInterface) => boolean;
+  INCLUDE_JOB_BY_LOCATION: (job: JobInterface) => boolean;
 }
 
 const getters = {
@@ -51,12 +53,19 @@ const getters = {
       .toLowerCase()
       .includes(state.skillsSearchTerm.toLowerCase());
   },
+  [INCLUDE_JOB_BY_LOCATION]: (state: GlobalState) => (job: JobInterface) => {
+    return job.locations
+      .join(" ")
+      .toLowerCase()
+      .includes(state.locationSearchTerm.toLowerCase());
+  },
   [FILTERED_JOBS](state: GlobalState, getters: IncludeJobGetters) {
     return state.jobs
       .filter((job) => getters.INCLUDE_JOB_BY_ORGANIZATION(job))
       .filter((job) => getters.INCLUDE_JOB_BY_JOB_TYPE(job))
       .filter((job) => getters.INCLUDE_JOB_BY_DEGREE(job))
-      .filter((job) => getters.INCLUDE_JOB_BY_SKILL(job));
+      .filter((job) => getters.INCLUDE_JOB_BY_SKILL(job))
+      .filter((job) => getters.INCLUDE_JOB_BY_LOCATION(job));
   },
 };
 
