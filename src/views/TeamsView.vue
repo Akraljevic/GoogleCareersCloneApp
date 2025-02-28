@@ -11,8 +11,26 @@
       </h2>
     </template>
   </header-container>
-  <div class="flex">
-    <team-view-jobs />
+  <div class="w-full py-4 pl-11">
+    <team-view-jobs class="flex flex-wrap justify-center pb-16">
+      <template #default="slotProps">
+        <router-link
+          to="/jobs/results"
+          class="flex flex-col border rounded-lg w-72 bg-brand-gray-2 h-96 overflow-hidden"
+        >
+          <img :src="slotProps.teamjob.img" class="object-cover h-48 w-full" />
+          <div class="p-4">
+            <h3 class="text-lg font-medium">{{ slotProps.teamjob.title }}</h3>
+            <p class="mt-3 text-sm">{{ slotProps.teamjob.description }}</p>
+          </div>
+          <router-link
+            to="/jobs/results"
+            class="px-6 pb-4 text-sm text-brand-blue-1"
+            >Learn more</router-link
+          >
+        </router-link>
+      </template>
+    </team-view-jobs>
   </div>
 </template>
 

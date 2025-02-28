@@ -21,6 +21,68 @@
       "degree": "Pursuing Degree"
     }
   ],
+  "teams": [
+    {
+      "id": 1,
+      "img": "https://images.unsplash.com/photo-1556075798-4825dfaaf498",
+      "title": "Cloud Engineering",
+      "description": "Build fun stuff in the cloud. It's a lot of fun, we promise!"
+    },
+    {
+      "id": 2,
+      "img": "https://images.unsplash.com/photo-1511376777868-611b54f68947",
+      "title": "Executive Leadership",
+      "description": "Be a leader for everyone. Leadership builds character."
+    },
+    {
+      "id": 3,
+      "img": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61",
+      "title": "Data Science",
+      "description": "Uncover patterns in data with modern techniques and advanced analytics."
+    },
+    {
+      "id": 5,
+      "img": "https://images.unsplash.com/photo-1556740749-887f6717d7e4",
+      "title": "AI Research",
+      "description": "Explore the frontiers of artificial intelligence and machine learning."
+    },
+    {
+      "id": 7,
+      "img": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+      "title": "Product Management",
+      "description": "Lead product innovation with strategic planning and market insights."
+    },
+    {
+      "id": 8,
+      "img": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      "title": "Cybersecurity",
+      "description": "Protect systems and data with state-of-the-art security practices."
+    },
+    {
+      "id": 9,
+      "img": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+      "title": "Software Engineering",
+      "description": "Build robust software solutions with modern programming techniques."
+    },
+    {
+      "id": 10,
+      "img": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+      "title": "Digital Marketing",
+      "description": "Drive growth with creative digital strategies and data-driven campaigns."
+    },
+    {
+      "id": 11,
+      "img": "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b",
+      "title": "Blockchain Development",
+      "description": "Revolutionize transactions with decentralized blockchain technology."
+    },
+    {
+      "id": 12,
+      "img": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+      "title": "Virtual Reality",
+      "description": "Step into immersive worlds and create next-level interactive experiences."
+    }
+  ],
   "spotlights": [
     {
       "id": 1,

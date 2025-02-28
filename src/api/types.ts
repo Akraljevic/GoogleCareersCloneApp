@@ -15,3 +15,10 @@ export interface Degrees {
   id: number;
   degree: string;
 }
+
+export interface Team {
+  id: number;
+  img: string;
+  title: string;
+  description: string;
+}
