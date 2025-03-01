@@ -32,7 +32,7 @@ import {
   useFetchJobsDispatch,
   useFetchDegreesDispatch,
 } from "@/store/composables";
-import { useCurrentPage } from "@/composables/useCurrentPage";
+import { useCurrentPage } from "@/composables/useCurrentPage.js";
 import usePreviousAndNextPage from "@/composables/usePreviousAndNextPage";
 import JobListing from "./JobListing.vue";
 

@@ -14,8 +14,7 @@
   <div class="w-full py-4 pl-11">
     <team-view-jobs class="flex flex-wrap justify-center pb-16">
       <template #default="slotProps">
-        <router-link
-          to="/jobs/results"
+        <div
           class="flex flex-col border rounded-lg w-72 bg-brand-gray-2 h-96 overflow-hidden"
         >
           <img :src="slotProps.teamjob.img" class="object-cover h-48 w-full" />
@@ -25,10 +24,10 @@
           </div>
           <router-link
             to="/jobs/results"
-            class="px-6 pb-4 text-sm text-brand-blue-1"
+            class="px-6 pt-8 text-sm text-brand-blue-2 hover:text-brand-blue-1"
             >Learn more</router-link
           >
-        </router-link>
+        </div>
       </template>
     </team-view-jobs>
   </div>
